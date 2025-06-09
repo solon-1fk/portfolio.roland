@@ -178,21 +178,35 @@ const toggleBtn = document.getElementById('toggleCertificates');
 let showAllCertificates = false;
 
 toggleBtn.addEventListener('click', () => {
-    showAllCertificates = !showAllCertificates;
-    renderCertificates(showAllCertificates);
-    
-    // Change button text
-    const btnText = toggleBtn.querySelector('.btn-text');
-    btnText.textContent = showAllCertificates ? 'Show Less Certificates' : 'View More Certificates';
-    
-    // Scroll to certificates section if showing more
+    const certificatesSection = document.getElementById('certificates');
+    const sectionTop = certificatesSection.getBoundingClientRect().top + window.pageYOffset;
+
+    // If hiding, scroll first before changing content
     if (showAllCertificates) {
-        document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
+        window.scrollTo({
+            top: sectionTop - 100, // adjust offset if needed
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+            showAllCertificates = false;
+            renderCertificates(showAllCertificates);
+            toggleBtn.querySelector('.btn-text').textContent = 'View More Certificates';
+        }, 500); // wait for scroll before collapsing
+    } else {
+        // Expand immediately
+        showAllCertificates = true;
+        renderCertificates(showAllCertificates);
+        toggleBtn.querySelector('.btn-text').textContent = 'Show Less Certificates';
+
+        // Optional: scroll to the section
+        certificatesSection.scrollIntoView({ behavior: 'smooth' });
     }
 });
 
 // Initial render of certificates
 renderCertificates();
+
 
 // Project Filtering
 const filterBtns = document.querySelectorAll('.filter-btn');
