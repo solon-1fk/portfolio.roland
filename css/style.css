@@ -256,7 +256,7 @@ section {
 }
 
 /* About Section */
-/* About Section - Responsive but keeping original structure */
+/* About Section - Responsive and visually appealing */
 .about-content {
     display: flex;
     align-items: center;
@@ -280,21 +280,26 @@ section {
     border: 0.2rem solid var(--main-color);
     box-shadow: 0 0 2rem var(--main-color);
     display: block;
+    position: relative;
+    z-index: 1; /* Ensures image stays above glow */
 }
 
+/* Blinking Glow Effect */
 .circle-spin {
     position: absolute;
-    top: -3%;
-    left: 2%;
-    width: 29rem;
-    height: 29rem;
+    inset: 0;
+    margin: auto;
     border-radius: 50%;
+    z-index: 0;
+    animation: glowBlink 5s ease-in-out infinite;
     box-shadow: 0 0 2rem var(--main-color);
-    animation: glowBlink  3s ease-in-out infinite;
     opacity: 0.6;
-    z-index: -1;
+    width: 100%;
+    max-width: 29rem;
+    aspect-ratio: 1 / 1;
 }
 
+/* Smooth blinking animation */
 @keyframes glowBlink {
     0%, 100% {
         box-shadow: 0 0 2rem var(--main-color);
@@ -337,7 +342,7 @@ section {
     color: var(--main-color);
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 1200px) {
     .about-content {
         gap: 4rem;
@@ -346,8 +351,7 @@ section {
         width: 85%;
     }
     .circle-spin {
-        width: 25rem;
-        height: 25rem;
+        max-width: 25rem;
     }
 }
 
@@ -362,8 +366,7 @@ section {
         max-width: 25rem;
     }
     .circle-spin {
-        width: 23rem;
-        height: 23rem;
+        max-width: 23rem;
     }
 }
 
@@ -378,6 +381,9 @@ section {
     .skill-tags {
         justify-content: center;
     }
+    .circle-spin {
+        max-width: 22rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -385,10 +391,10 @@ section {
         max-width: 22rem;
     }
     .circle-spin {
-        width: 20rem;
-        height: 20rem;
+        max-width: 20rem;
     }
 }
+
 
 /* Resume Section */
 .resume-content {
