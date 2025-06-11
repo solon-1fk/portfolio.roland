@@ -266,8 +266,8 @@ section {
 .about-img {
     position: relative;
     width: 100%;
-    max-width: 40rem; /* Added max-width */
-    height: auto; /* Changed to auto */
+    max-width: 40rem;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -275,7 +275,7 @@ section {
 
 .about-img img {
     width: 90%;
-    max-width: 27rem; /* Added max-width */
+    max-width: 27rem;
     border-radius: 50%;
     border: 0.2rem solid var(--main-color);
     box-shadow: 0 0 2rem var(--main-color);
@@ -284,38 +284,41 @@ section {
 
 .circle-spin {
     position: absolute;
-    top:-3%;
+    top: -3%;
     left: 2%;
     width: 29rem;
     height: 29rem;
     border-radius: 50%;
-    border-top: 0.2rem solid var(--second-bg-color);
-    border-bottom: 0.2rem solid var(--second-bg-color);
-    border-left: 0.2rem solid var(--main-color);
-    border-right: 0.2rem solid var(--main-color);
-    transform: translate(-50%, -50%) rotate(0deg);
-    animation: spin 8s linear infinite;
-    box-sizing: border-box;
+    box-shadow: 0 0 2rem var(--main-color);
+    animation: glowBlink  3s ease-in-out infinite;
+    opacity: 0.6;
+    z-index: -1;
 }
 
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes glowBlink {
+    0%, 100% {
+        box-shadow: 0 0 2rem var(--main-color);
+        opacity: 0.6;
+    }
+    50% {
+        box-shadow: 0 0 4rem var(--main-color);
+        opacity: 1;
+    }
 }
 
 .about-text h3 {
-    font-size: clamp(2.2rem, 2.5vw, 2.6rem); /* Fluid font size */
+    font-size: clamp(2.2rem, 2.5vw, 2.6rem);
     margin-bottom: 2rem;
     color: var(--main-color);
 }
 
 .about-text p {
-    font-size: clamp(1.4rem, 1.6vw, 1.6rem); /* Fluid font size */
+    font-size: clamp(1.4rem, 1.6vw, 1.6rem);
     margin-bottom: 3rem;
 }
 
 .skills h4 {
-    font-size: clamp(1.8rem, 2vw, 2rem); /* Fluid font size */
+    font-size: clamp(1.8rem, 2vw, 2rem);
     margin-bottom: 1.5rem;
 }
 
@@ -326,7 +329,7 @@ section {
 }
 
 .skill-tags span {
-    font-size: clamp(1.2rem, 1.4vw, 1.4rem); /* Fluid font size */
+    font-size: clamp(1.2rem, 1.4vw, 1.4rem);
     padding: 0.5rem 1.5rem;
     background: rgba(0, 171, 240, 0.1);
     border: 0.1rem solid var(--main-color);
@@ -334,7 +337,7 @@ section {
     color: var(--main-color);
 }
 
-/* Responsive adjustments (structure remains identical) */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
     .about-content {
         gap: 4rem;
@@ -366,7 +369,7 @@ section {
 
 @media (max-width: 768px) {
     .about-content {
-        flex-direction: column; /* Stack only when necessary */
+        flex-direction: column;
         text-align: center;
     }
     .about-img {
@@ -386,6 +389,7 @@ section {
         height: 20rem;
     }
 }
+
 /* Resume Section */
 .resume-content {
     display: flex;
