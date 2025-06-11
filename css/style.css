@@ -766,7 +766,7 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 3rem;
 }
 
@@ -776,13 +776,17 @@ section {
     overflow: hidden;
     transition: var(--transition);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .project-item:hover {
     transform: translateY(-1rem);
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 171, 240, 0.2);
+    box-shadow:
+        0 0 3rem rgba(0, 171, 240, 0.6),
+        0 0 2rem rgba(0, 171, 240, 0.4);
 }
 
+/* Project Image */
 .project-img {
     position: relative;
     height: 25rem;
@@ -800,6 +804,7 @@ section {
     transform: scale(1.1);
 }
 
+/* Overlay with link */
 .project-links {
     position: absolute;
     top: 0;
@@ -812,10 +817,12 @@ section {
     align-items: center;
     opacity: 0;
     transition: var(--transition);
+    pointer-events: none;
 }
 
 .project-item:hover .project-links {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .project-link {
@@ -828,11 +835,13 @@ section {
     border-radius: 50%;
     margin: 0 1rem;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .project-link:hover {
     background: var(--main-color);
     transform: rotate(360deg);
+    box-shadow: 0 0 1rem var(--main-color), 0 0 2rem var(--main-color);
 }
 
 .project-link i {
@@ -840,6 +849,7 @@ section {
     color: var(--bg-color);
 }
 
+/* Project Text Info */
 .project-info {
     padding: 2rem;
 }
@@ -869,6 +879,37 @@ section {
     border-radius: 2rem;
     color: var(--main-color);
 }
+
+/* Mobile Responsiveness Tweaks */
+@media (max-width: 768px) {
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .project-img {
+        height: 20rem;
+    }
+
+    .project-link {
+        width: 4.2rem;
+        height: 4.2rem;
+    }
+
+    .project-link i {
+        font-size: 1.8rem;
+    }
+
+    .project-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .project-info p {
+        font-size: 1.3rem;
+    }
+}
+
+
 
 /* Responsive Layouts */
 @media (max-width: 1200px) {
