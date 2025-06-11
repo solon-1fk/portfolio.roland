@@ -256,7 +256,7 @@ section {
 }
 
 /* About Section */
-/* About Section - Responsive and visually appealing */
+/* About Section - Clean, responsive, with blinking border effect */
 .about-content {
     display: flex;
     align-items: center;
@@ -280,34 +280,16 @@ section {
     border: 0.2rem solid var(--main-color);
     box-shadow: 0 0 2rem var(--main-color);
     display: block;
-    position: relative;
-    z-index: 1; /* Ensures image stays above glow */
+    animation: glowBlink 3s ease-in-out infinite;
 }
 
-/* Blinking Glow Effect */
-.circle-spin {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    border-radius: 50%;
-    z-index: 0;
-    animation: glowBlink 5s ease-in-out infinite;
-    box-shadow: 0 0 2rem var(--main-color);
-    opacity: 0.6;
-    width: 100%;
-    max-width: 29rem;
-    aspect-ratio: 1 / 1;
-}
-
-/* Smooth blinking animation */
+/* Smooth blinking glow around the image */
 @keyframes glowBlink {
     0%, 100% {
         box-shadow: 0 0 2rem var(--main-color);
-        opacity: 0.6;
     }
     50% {
         box-shadow: 0 0 4rem var(--main-color);
-        opacity: 1;
     }
 }
 
@@ -342,16 +324,13 @@ section {
     color: var(--main-color);
 }
 
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
     .about-content {
         gap: 4rem;
     }
     .about-img img {
         width: 85%;
-    }
-    .circle-spin {
-        max-width: 25rem;
     }
 }
 
@@ -364,9 +343,6 @@ section {
     }
     .about-img img {
         max-width: 25rem;
-    }
-    .circle-spin {
-        max-width: 23rem;
     }
 }
 
@@ -381,17 +357,11 @@ section {
     .skill-tags {
         justify-content: center;
     }
-    .circle-spin {
-        max-width: 22rem;
-    }
 }
 
 @media (max-width: 576px) {
     .about-img img {
         max-width: 22rem;
-    }
-    .circle-spin {
-        max-width: 20rem;
     }
 }
 
